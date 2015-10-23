@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".view.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,8 +36,12 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activities.ActivityMap"
-            android:label="@string/title_activity_activity_map" >
+            android:name=".view.activities.UdeaMapActivity"
+            android:label="@string/title_activity_udea_map" >
+        </activity>
+        <activity
+            android:name=".view.activities.AdvancedSearchActivity"
+            android:label="@string/title_activity_advanced_search" >
         </activity>
     </application>
 

@@ -4,6 +4,8 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
+    compileOptions.encoding = 'UTF-8'
+
     defaultConfig {
         applicationId "co.edu.udea.pi2.ubicameudea"
         minSdkVersion 21

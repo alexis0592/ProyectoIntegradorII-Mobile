@@ -1,7 +1,20 @@
 <resources>
-    <string name="app_name">UbicameUdea</string>
+    <string name="app_name">UbicameUdeA</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_activity_map">Map</string>
+    <string name="title_activity_udea_map">UdeaMapActivity</string>
+    <string name="title_activity_advanced_search">AdvancedSearchActivity</string>
+    <string name="text_tipo_unidad">Tipo de unidad: *</string>
+    <string name="text_unidades">Unidades: *</string>
+    <string name="text_departamentos">Departamentos: </string>
+    <string name="text_bloques">Bloques:</string>
+    <string name="message_seleccione_filtros">Seleccione las opciones de búsqueda para encontrar una ubicación.</string>
+    <string name="message_seleccione_ubicacion">Se han encontrado los siguientes lugares, seleccione uno y visualice en el mapa su ubicación:</string>
+    <string name="text_ver_ubicacion">Ver ubicación</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="msg_salon_obligatorio">Debe ingresar un salón u oficina.</string>
+    <string name="msg_bloque_obligatorio">Debe ingresar un bloque.</string>
+    <string name="msg_lugar_no_encontrado">El lugar no ha sido encontrado.</string>
+    <string name="msg_salon_bloque_formato_numero">El bloque, salón u oficina debe ser un número.</string>
 </resources>

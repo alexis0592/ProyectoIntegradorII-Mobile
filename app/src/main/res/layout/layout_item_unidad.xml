@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dp">
+
+    <TextView
+        android:id="@+id/item_unidad_txvId"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="id"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/item_unidad_txvNombre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="nombre"
+        android:padding="3dp"/>
+
+</LinearLayout>

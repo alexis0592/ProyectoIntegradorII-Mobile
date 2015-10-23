@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="faculties_array">
+        <item>Facultad</item>
+        <item>Ingeniería</item>
+        <item>Medicina</item>
+        <item>Educación</item>
+    </string-array>
+
+</resources>
