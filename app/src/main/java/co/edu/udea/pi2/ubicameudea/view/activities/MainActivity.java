@@ -14,6 +14,7 @@ import android.widget.Toast;
 import co.edu.udea.pi2.ubicameudea.R;
 import co.edu.udea.pi2.ubicameudea.domain.process.impl.UbicacionProcessImpl;
 import co.edu.udea.pi2.ubicameudea.model.dto.Ubicacion;
+import co.edu.udea.pi2.ubicameudea.services.UbicameServices;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,12 +22,15 @@ public class MainActivity extends ActionBarActivity {
     private ImageView imgMapButton;
     private EditText etxBloque, etxSalon;
     private ImageView btnVer;
+    private UbicameServices ubicameServices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initComponents();
+        ubicameServices = new UbicameServices("https://ubicame-udea.herokuapp.com/bloques", this);
+        ubicameServices.execute();
     }
 
     public void initComponents() {
