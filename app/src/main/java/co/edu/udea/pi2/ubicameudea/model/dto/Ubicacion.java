@@ -7,39 +7,39 @@ import java.io.Serializable;
  */
 public class Ubicacion implements Serializable{
 
-    private Integer ubicacionId;
-    private Integer bloqueId;
-    private Integer oficina;
+    private String ubicacionId;
+    private String bloqueId;
+    private String oficina;
     private Double latitud;
     private Double longitud;
-    private Integer departamentoId;
-    private Integer unidadId;
+    private String departamentoId;
+    private String unidadId;
 
     public Ubicacion(){
         super();
     }
 
-    public Integer getUbicacionId() {
+    public String getUbicacionId() {
         return ubicacionId;
     }
 
-    public void setUbicacionId(Integer ubicacionId) {
+    public void setUbicacionId(String ubicacionId) {
         this.ubicacionId = ubicacionId;
     }
 
-    public Integer getBloqueId() {
+    public String getBloqueId() {
         return bloqueId;
     }
 
-    public void setBloqueId(Integer bloqueId) {
+    public void setBloqueId(String bloqueId) {
         this.bloqueId = bloqueId;
     }
 
-    public Integer getOficina() {
+    public String getOficina() {
         return oficina;
     }
 
-    public void setOficina(Integer oficina) {
+    public void setOficina(String oficina) {
         this.oficina = oficina;
     }
 
@@ -59,19 +59,19 @@ public class Ubicacion implements Serializable{
         this.longitud = longitud;
     }
 
-    public Integer getDepartamentoId() {
+    public String getDepartamentoId() {
         return departamentoId;
     }
 
-    public void setDepartamentoId(Integer departamentoId) {
+    public void setDepartamentoId(String departamentoId) {
         this.departamentoId = departamentoId;
     }
 
-    public Integer getUnidadId() {
+    public String getUnidadId() {
         return unidadId;
     }
 
-    public void setUnidadId(Integer unidadId) {
+    public void setUnidadId(String unidadId) {
         this.unidadId = unidadId;
     }
 }

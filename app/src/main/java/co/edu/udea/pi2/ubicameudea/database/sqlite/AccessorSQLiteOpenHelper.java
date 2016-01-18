@@ -26,22 +26,22 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String bloqueTableSQLCreator = String.format("CREATE TABLE %s(%s INTEGER NOT NULL," +
+        String bloqueTableSQLCreator = String.format("CREATE TABLE %s(%s TEXT NOT NULL," +
                         " %s TEXT NOT NULL, PRIMARY KEY(%s))",
                 BloqueContract.TABLE_NAME,
                 BloqueContract.Column.ID_BLOQUE,
                 BloqueContract.Column.NUMERO,
                 BloqueContract.Column.ID_BLOQUE);
 
-        String  tipoUnidadTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s INTEGER NOT NULL," +
+        String  tipoUnidadTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s TEXT NOT NULL," +
                         " %s TEXT NOT NULL, PRIMARY KEY(%s))",
                 TipoUnidadContract.TABLE_NAME,
                 TipoUnidadContract.Column.ID_TIPO_UNIDAD,
                 TipoUnidadContract.Column.NOMBRE,
                TipoUnidadContract.Column.ID_TIPO_UNIDAD);
 
-        String unidadTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s INTEGER NOT NULL," +
-                " %s TEXT NOT NULL, %s INTEGER NOT NULL, PRIMARY KEY(%s), FOREIGN KEY(%s) REFERENCES %s(%s))",
+        String unidadTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s TEXT NOT NULL," +
+                " %s TEXT NOT NULL, %s TEXT NOT NULL, PRIMARY KEY(%s), FOREIGN KEY(%s) REFERENCES %s(%s))",
                 UnidadContract.TABLE_NAME,
                 UnidadContract.Column.ID_UNIDAD,
                 UnidadContract.Column.NOMBRE,
@@ -51,16 +51,16 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
                 TipoUnidadContract.TABLE_NAME,
                 TipoUnidadContract.Column.ID_TIPO_UNIDAD);
 
-        String departamentoTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s INTEGER NOT NULL, " +
-                "%s TEXT NOT NULL, %s INTEGER NOT NULL, PRIMARY KEY(%s), FOREIGN KEY(%s) REFERENCES %s(%s))",
+        String departamentoTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s TEXT NOT NULL, " +
+                "%s TEXT NOT NULL, %s TEXT NOT NULL, PRIMARY KEY(%s), FOREIGN KEY(%s) REFERENCES %s(%s))",
                 DepartamentoContract.TABLE_NAME, DepartamentoContract.Column.ID_DEPARTAMENTO,
                 DepartamentoContract.Column.NOMBRE, DepartamentoContract.Column.ID_UNIDAD,
                 DepartamentoContract.Column.ID_DEPARTAMENTO, DepartamentoContract.Column.ID_UNIDAD,
                 UnidadContract.TABLE_NAME, UnidadContract.Column.ID_UNIDAD);
 
-        String ubicacionTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s INTEGER " +
-                "NOT NULL, %s INTEGER NOT NULL, %s INTEGER NOT NULL, %s REAL NOT NULL, %s REAL NOT NULL, " +
-                "%s INTEGER NOT NULL, %s INTEGER NOT NULL, PRIMARY KEY(%s), FOREIGN KEY(%s) REFERENCES %s(%s), " +
+        String ubicacionTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s TEXT " +
+                "NOT NULL, %s TEXT NOT NULL, %s INTEGER NOT NULL, %s REAL NOT NULL, %s REAL NOT NULL, " +
+                "%s TEXT NOT NULL, %s TEXT NOT NULL, PRIMARY KEY(%s), FOREIGN KEY(%s) REFERENCES %s(%s), " +
                 "FOREIGN KEY(%s) REFERENCES %s(%s), FOREIGN KEY(%s) REFERENCES %s(%s))",
                 UbicacionContract.TABLE_NAME, UbicacionContract.Column.ID_UBICACION, UbicacionContract.Column.ID_BLOQUE,
                 UbicacionContract.Column.OFICINA, UbicacionContract.Column.LATITUD, UbicacionContract.Column.LONGITUD,
@@ -81,7 +81,7 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(departamentoTableSQLCreator);
         db.execSQL(ubicacionTableSQLCreator);
 
-        LlenarBaseDatos(db);
+        //LlenarBaseDatos(db);
     }
 
     private void LlenarBaseDatos(SQLiteDatabase db) {
@@ -95,6 +95,10 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
         Log.d(TAG, "Se llenaron los departamentos");
         insertarUbicaciones(db);
         Log.d(TAG, "Se llenaron las ubicaciones");
+    }
+
+    private void deleteInfoFromTables(SQLiteDatabase db){
+
     }
 
     private void insertarUbicaciones(SQLiteDatabase db) {

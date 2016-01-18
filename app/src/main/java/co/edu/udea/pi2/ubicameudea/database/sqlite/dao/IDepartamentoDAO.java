@@ -11,5 +11,5 @@ public interface IDepartamentoDAO {
 
     public List<ContentValues> findAll();
 
-    public List<ContentValues> findByIdUnidad(int idUnidad);
+    public List<ContentValues> findByIdUnidad(String idUnidad);
 }

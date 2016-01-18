@@ -11,5 +11,5 @@ public interface IUbicacionDAO {
 
     public List<ContentValues> findUbicationByBloqueAndOffice(int bloque, int numOffice);
 
-    public List<ContentValues> findUbicacion(int idUnidad, int idDepartamento, int idBloque);
+    public List<ContentValues> findUbicacion(String idUnidad, String idDepartamento, String idBloque);
 }

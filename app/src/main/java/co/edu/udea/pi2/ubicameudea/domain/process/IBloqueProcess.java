@@ -9,6 +9,8 @@ import co.edu.udea.pi2.ubicameudea.model.dto.Bloque;
  */
 public interface IBloqueProcess {
 
+    public Bloque saveBloque(Bloque bloque);
+
     public List<Bloque> findAllBloques();
 
 }

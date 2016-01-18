@@ -57,7 +57,7 @@ public class UbicacionDAOImpl implements IUbicacionDAO {
     }
 
     @Override
-    public List<ContentValues> findUbicacion(int idUnidad, int idDepartamento, int idBloque){
+    public List<ContentValues> findUbicacion(String idUnidad, String idDepartamento, String idBloque){
         Log.i(TAG, "findUbicationByBloqueAndOffice");
 
         SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getReadableDatabase();

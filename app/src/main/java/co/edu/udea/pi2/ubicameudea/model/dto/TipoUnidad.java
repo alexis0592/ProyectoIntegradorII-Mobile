@@ -5,18 +5,18 @@ package co.edu.udea.pi2.ubicameudea.model.dto;
  */
 public class TipoUnidad {
 
-    private Integer idTipoUnidad;
+    private String idTipoUnidad;
     private String nombre;
 
     public TipoUnidad(){
         super();
     }
 
-    public Integer getIdTipoUnidad() {
+    public String getIdTipoUnidad() {
         return idTipoUnidad;
     }
 
-    public void setIdTipoUnidad(Integer idTipoUnidad) {
+    public void setIdTipoUnidad(String idTipoUnidad) {
         this.idTipoUnidad = idTipoUnidad;
     }
 

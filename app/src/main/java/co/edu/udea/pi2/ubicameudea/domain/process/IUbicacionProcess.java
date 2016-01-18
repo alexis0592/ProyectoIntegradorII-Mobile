@@ -11,6 +11,6 @@ public interface IUbicacionProcess {
 
     public Ubicacion finUbicacionByBloqAndOffice(int bloq, int office);
 
-    public List<Ubicacion> findUbicacion(int idUnidad, int idDepartamento, int idBloque);
+    public List<Ubicacion> findUbicacion(String idUnidad, String idDepartamento, String idBloque);
 
 }

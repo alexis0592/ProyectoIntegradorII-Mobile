@@ -28,6 +28,12 @@ public class BloqueProcessImpl implements IBloqueProcess {
     }
 
     @Override
+    public Bloque saveBloque(Bloque bloque) {
+
+        return ((this.bloqueDAO.save(this.convertBloqueToContenValue(bloque)) != null) ? bloque : null);
+    }
+
+    @Override
     public List<Bloque> findAllBloques() {
         Log.i(TAG, "findAllBloques");
 
@@ -49,9 +55,19 @@ public class BloqueProcessImpl implements IBloqueProcess {
     private Bloque convertContentValueToBloque(ContentValues contentValues) throws ParseException {
         Bloque bloque = new Bloque();
 
-        bloque.setIdBloque(Integer.parseInt(contentValues.getAsString(BloqueContract.Column.ID_BLOQUE)));
+        bloque.setIdBloque(contentValues.getAsString(BloqueContract.Column.ID_BLOQUE));
         bloque.setNumBloque(contentValues.getAsString(BloqueContract.Column.NUMERO));
 
         return bloque;
+    }
+
+    private ContentValues convertBloqueToContenValue(Bloque bloque){
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(BloqueContract.Column.ID_BLOQUE, bloque.getIdBloque());
+        contentValues.put(BloqueContract.Column.NUMERO, bloque.getNumBloque());
+
+        return contentValues;
     }
 }

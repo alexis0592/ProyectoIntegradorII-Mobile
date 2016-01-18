@@ -37,6 +37,20 @@ public class BloqueDAOImpl implements IBloqueDAO {
     }
 
     @Override
+    public ContentValues save(ContentValues bloqueContentValue) {
+        try {
+            SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getWritableDatabase();
+
+            long rowId = sqLiteDatabase.insertWithOnConflict(BloqueContract.TABLE_NAME, null, bloqueContentValue,
+                    SQLiteDatabase.CONFLICT_IGNORE);
+            return ((rowId != -1L) ? bloqueContentValue : null);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public List<ContentValues> findAllBloque(Boolean distinct, String[] columns,
                                              String selection, String[] selectionArgs, String groupBy,
                                              String having, String orderBy, String limit) {

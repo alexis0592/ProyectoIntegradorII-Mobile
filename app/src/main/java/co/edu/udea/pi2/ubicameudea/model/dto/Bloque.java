@@ -4,18 +4,18 @@ package co.edu.udea.pi2.ubicameudea.model.dto;
  * Created by Alexis on 18/06/15.
  */
 public class Bloque {
-    private Integer idBloque;
+    private String idBloque;
     private String numBloque;
 
     public Bloque(){
         super();
     }
 
-    public Integer getIdBloque() {
+    public String getIdBloque() {
         return idBloque;
     }
 
-    public void setIdBloque(Integer idBloque) {
+    public void setIdBloque(String idBloque) {
         this.idBloque = idBloque;
     }
 

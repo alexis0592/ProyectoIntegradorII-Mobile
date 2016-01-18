@@ -11,5 +11,5 @@ public interface IDepartamentoProcess {
 
     public List<Departamento> findAll();
 
-    public List<Departamento> findByIdUnidad(int idUnidad);
+    public List<Departamento> findByIdUnidad(String idUnidad);
 }

@@ -37,6 +37,20 @@ public class TipoUnidadDAOImpl implements ITipoUnidadDAO{
     }
 
     @Override
+    public ContentValues save(ContentValues tipoUnidadContentValue) {
+        try {
+            SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getWritableDatabase();
+
+            long rowId = sqLiteDatabase.insertWithOnConflict(TipoUnidadContract.TABLE_NAME, null, tipoUnidadContentValue,
+                    SQLiteDatabase.CONFLICT_IGNORE);
+            return ((rowId != -1L) ? tipoUnidadContentValue : null);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public List<ContentValues> findAll() {
         Log.i(TAG, "findAll");
 

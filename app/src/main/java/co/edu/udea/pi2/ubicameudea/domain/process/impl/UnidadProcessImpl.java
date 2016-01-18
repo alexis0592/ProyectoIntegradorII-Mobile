@@ -20,24 +20,29 @@ import co.edu.udea.pi2.ubicameudea.persistance.contract.UnidadContract;
 public class UnidadProcessImpl implements IUnidadProcess{
 
     private static final String TAG = UnidadProcessImpl.class.getSimpleName();
-    private IUnidadDAO tipoUnidadDAO;
+    private IUnidadDAO unidadDAO;
 
     public UnidadProcessImpl(Context context) {
         super();
-        this.tipoUnidadDAO = UnidadDAOImpl.getInstance(context);
+        this.unidadDAO = UnidadDAOImpl.getInstance(context);
     }
 
     @Override
-    public List<Unidad> findUnidadesByTipo(int idTipo){
+    public Unidad saveUnidad(Unidad unidad) {
+        return ((this.unidadDAO.saveUnidad(this.convertUnidadToContentValue(unidad)) != null) ? unidad: null);
+    }
+
+    @Override
+    public List<Unidad> findUnidadesByTipo(String idTipo){
         Log.i(TAG, "findUnidadesByTipo");
 
         List<Unidad> list = new ArrayList<Unidad>();
         try {
             List<ContentValues> contentValuesList = null;
-            if(idTipo != -1)
-                contentValuesList = this.tipoUnidadDAO.findUnidadesByTipo(idTipo);
+            if(idTipo != "-1")
+                contentValuesList = this.unidadDAO.findUnidadesByTipo(idTipo);
             else
-                contentValuesList = this.tipoUnidadDAO.findAll();
+                contentValuesList = this.unidadDAO.findAll();
 
             for (ContentValues contentValue : contentValuesList) {
                 list.add(this.convertContentValueToDto(contentValue));
@@ -49,10 +54,21 @@ public class UnidadProcessImpl implements IUnidadProcess{
         return list;
     }
 
+    private ContentValues convertUnidadToContentValue(Unidad unidad){
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(UnidadContract.Column.ID_UNIDAD, unidad.getIdUnidad());
+        contentValues.put(UnidadContract.Column.NOMBRE, unidad.getNombre());
+        contentValues.put(UnidadContract.Column.ID_TIPO_UNIDAD, unidad.getTipoUnidad().getIdTipoUnidad());
+
+        return contentValues;
+    }
+
     private Unidad convertContentValueToDto(ContentValues contentValues) throws ParseException {
         Unidad unidad = new Unidad();
 
-        unidad.setIdUnidad(Integer.parseInt(contentValues.getAsString(UnidadContract.Column.ID_UNIDAD)));
+        unidad.setIdUnidad(contentValues.getAsString(UnidadContract.Column.ID_UNIDAD));
         unidad.setNombre(contentValues.getAsString(UnidadContract.Column.NOMBRE));
 
         return unidad;

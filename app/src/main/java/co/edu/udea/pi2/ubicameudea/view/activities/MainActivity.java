@@ -1,7 +1,9 @@
 package co.edu.udea.pi2.ubicameudea.view.activities;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -23,13 +25,18 @@ public class MainActivity extends ActionBarActivity {
     private EditText etxBloque, etxSalon;
     private ImageView btnVer;
     private UbicameServices ubicameServices;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initComponents();
-        ubicameServices = new UbicameServices("https://ubicame-udea.herokuapp.com/bloques", this);
+        ubicameServices = new UbicameServices("Bloque", "https://ubicame-udea.herokuapp.com/bloques", this);
+        ubicameServices.execute();
+        ubicameServices = new UbicameServices("TipoUnidad", "https://ubicame-udea.herokuapp.com/tiposunidad", this);
+        ubicameServices.execute();
+        ubicameServices = new UbicameServices("Unidad", "https://ubicame-udea.herokuapp.com/unidades", this);
         ubicameServices.execute();
     }
 
@@ -39,6 +46,8 @@ public class MainActivity extends ActionBarActivity {
         this.etxBloque.setTextColor(Color.parseColor("#FFFFFF"));
         this.etxSalon = (EditText) super.findViewById(R.id.main_etxSalon);
         this.etxSalon.setTextColor(Color.parseColor("#FFFFFF"));
+
+        UbicacionProcessImpl ubicacionProcess = new UbicacionProcessImpl(getBaseContext());
 
         this.imgMapButton = (ImageView) super.findViewById(R.id.goMapButton);
         imgMapButton.setOnClickListener(new View.OnClickListener() {
@@ -82,10 +91,19 @@ public class MainActivity extends ActionBarActivity {
         startActivity(new Intent(this, advancedSearchActivity.getClass()));
     }
 
+    public void restoreActionBar() {
+        ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle("Ubicame Udea");
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#224933")));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        //restoreActionBar();
         return true;
     }
 

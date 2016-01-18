@@ -9,5 +9,7 @@ import java.util.List;
  */
 public interface ITipoUnidadDAO {
 
+    public ContentValues save(ContentValues tipoUnidadContentValue);
+
     public List<ContentValues> findAll();
 }

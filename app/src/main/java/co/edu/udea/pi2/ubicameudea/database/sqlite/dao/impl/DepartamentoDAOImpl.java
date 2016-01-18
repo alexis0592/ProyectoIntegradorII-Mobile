@@ -56,12 +56,12 @@ public class DepartamentoDAOImpl implements IDepartamentoDAO {
     }
 
     @Override
-    public List<ContentValues> findByIdUnidad(int idUnidad){
+    public List<ContentValues> findByIdUnidad(String idUnidad){
         Log.i(TAG, "findByIdUnidad");
 
         SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getReadableDatabase();
 
-        String query = String.format("SELECT * FROM %s WHERE %s = %s OR %s = %s ORDER BY %s",
+        String query = String.format("SELECT * FROM %s WHERE %s = '%s' OR %s = '%s' ORDER BY %s",
                 DepartamentoContract.TABLE_NAME,
                 DepartamentoContract.Column.ID_UNIDAD, idUnidad,
                 DepartamentoContract.Column.ID_UNIDAD, -1,

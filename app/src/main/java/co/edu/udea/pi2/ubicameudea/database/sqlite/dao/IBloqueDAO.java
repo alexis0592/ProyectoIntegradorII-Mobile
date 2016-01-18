@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface IBloqueDAO {
 
+    public ContentValues save(ContentValues bloqueContentValue);
+
     public List<ContentValues> findAllBloque(Boolean distinct, String[] columns,
                                              String selection, String[] selectionArgs, String groupBy,
                                              String having, String orderBy, String limit);

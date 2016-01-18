@@ -9,6 +9,8 @@ import co.edu.udea.pi2.ubicameudea.model.dto.Unidad;
  */
 public interface IUnidadProcess {
 
-    public List<Unidad> findUnidadesByTipo(int idTipo);
+    public Unidad saveUnidad(Unidad unidad);
+
+    public List<Unidad> findUnidadesByTipo(String idTipo);
 
 }

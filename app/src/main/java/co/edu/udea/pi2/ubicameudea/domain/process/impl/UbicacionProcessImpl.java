@@ -44,7 +44,8 @@ public class UbicacionProcessImpl implements IUbicacionProcess {
         return ubicacion;
     }
 
-    public List<Ubicacion> findUbicacion(int idUnidad, int idDepartamento, int idBloque){
+    @Override
+    public List<Ubicacion> findUbicacion(String idUnidad, String idDepartamento, String idBloque){
         List<Ubicacion> listUbicaciones = new ArrayList<Ubicacion>();
 
         try {
@@ -64,13 +65,13 @@ public class UbicacionProcessImpl implements IUbicacionProcess {
     private Ubicacion convertContentValueToUbicacion(ContentValues contentValues) throws ParseException{
         Ubicacion ubicacion = new Ubicacion();
 
-        ubicacion.setUbicacionId(contentValues.getAsInteger(UbicacionContract.Column.ID_UBICACION));
-        ubicacion.setBloqueId(Integer.parseInt(contentValues.getAsString(UbicacionContract.Column.ID_BLOQUE)));
-        ubicacion.setDepartamentoId(Integer.parseInt(contentValues.getAsString(UbicacionContract.Column.ID_DEPARTAMENTO)));
-        ubicacion.setUnidadId(Integer.parseInt(contentValues.getAsString(UbicacionContract.Column.ID_UNIDAD)));
+        ubicacion.setUbicacionId(contentValues.getAsString(UbicacionContract.Column.ID_UBICACION));
+        ubicacion.setBloqueId(contentValues.getAsString(UbicacionContract.Column.ID_BLOQUE));
+        ubicacion.setDepartamentoId(contentValues.getAsString(UbicacionContract.Column.ID_DEPARTAMENTO));
+        ubicacion.setUnidadId(contentValues.getAsString(UbicacionContract.Column.ID_UNIDAD));
         ubicacion.setLatitud(Double.parseDouble(contentValues.getAsString(UbicacionContract.Column.LATITUD)));
         ubicacion.setLongitud(Double.parseDouble(contentValues.getAsString(UbicacionContract.Column.LONGITUD)));
-        ubicacion.setOficina(Integer.parseInt(contentValues.getAsString(UbicacionContract.Column.OFICINA)));
+        ubicacion.setOficina(contentValues.getAsString(UbicacionContract.Column.OFICINA));
 
         return ubicacion;
     }

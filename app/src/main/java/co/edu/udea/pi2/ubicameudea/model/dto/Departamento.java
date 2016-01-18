@@ -5,7 +5,7 @@ package co.edu.udea.pi2.ubicameudea.model.dto;
  */
 public class Departamento {
 
-    private Integer idDepartamento;
+    private String idDepartamento;
     private String nombre;
     private Unidad unidad;
 
@@ -13,11 +13,11 @@ public class Departamento {
         super();
     }
 
-    public Integer getDepartamentoId() {
+    public String getDepartamentoId() {
         return idDepartamento;
     }
 
-    public void setDepartamentoId(Integer departamentoId) {
+    public void setDepartamentoId(String departamentoId) {
         this.idDepartamento = departamentoId;
     }
 

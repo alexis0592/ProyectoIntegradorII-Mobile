@@ -36,12 +36,26 @@ public class UnidadDAOImpl implements IUnidadDAO {
     }
 
     @Override
-    public List<ContentValues> findUnidadesByTipo(int idTipo) {
+    public ContentValues saveUnidad(ContentValues unidadContentValue) {
+        try {
+            SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getWritableDatabase();
+
+            long rowId = sqLiteDatabase.insertWithOnConflict(UnidadContract.TABLE_NAME, null, unidadContentValue,
+                    SQLiteDatabase.CONFLICT_IGNORE);
+            return ((rowId != -1L) ? unidadContentValue : null);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<ContentValues> findUnidadesByTipo(String idTipo) {
         Log.i(TAG, "findUnidadesByTipo");
 
         SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getReadableDatabase();
 
-        String query = String.format("SELECT * FROM %s WHERE %s = %s OR %s = %s ORDER BY %s",
+        String query = String.format("SELECT * FROM %s WHERE %s = '%s' OR %s = '%s' ORDER BY %s",
                 UnidadContract.TABLE_NAME,
                 UnidadContract.Column.ID_TIPO_UNIDAD, idTipo,
                 UnidadContract.Column.ID_TIPO_UNIDAD, -1,

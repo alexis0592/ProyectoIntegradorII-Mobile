@@ -55,9 +55,9 @@ public class AdvancedSearchActivity extends ActionBarActivity {
     private List<TipoUnidad> tiposUnidad;
     private List<Unidad> unidades;
     private List<Departamento> departamentos;
-    private Integer idUnidad;
-    private Integer idDepartamento;
-    private Integer idBloque;
+    private String idUnidad;
+    private String idDepartamento;
+    private String idBloque;
     private Ubicacion ubicacion;
 
     @Override
@@ -90,7 +90,7 @@ public class AdvancedSearchActivity extends ActionBarActivity {
         spnTipoUnidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View v, int position, long id) {
-                Integer idTipoUnidad = Integer.parseInt(((TextView) v.findViewById(R.id.item_tipo_unidad_txvId)).getText().toString());
+                String idTipoUnidad = (((TextView) v.findViewById(R.id.item_tipo_unidad_txvId)).getText().toString());
                 if (!idTipoUnidad.equals(null)) {
                     unidades = unidadProcess.findUnidadesByTipo(idTipoUnidad);
                     unidadAdapter = new UnidadAdapter(getBaseContext(), R.layout.layout_item_unidad, unidades);

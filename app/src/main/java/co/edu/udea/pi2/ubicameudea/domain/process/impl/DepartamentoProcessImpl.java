@@ -47,13 +47,14 @@ public class DepartamentoProcessImpl implements IDepartamentoProcess {
         return list;
     }
 
-    public List<Departamento> findByIdUnidad(int idUnidad){
+    @Override
+    public List<Departamento> findByIdUnidad(String idUnidad){
         Log.i(TAG, "findByIdUnidad");
 
         List<Departamento> list = new ArrayList<Departamento>();
         try {
             List<ContentValues> contentValuesList = null;
-            if(idUnidad != -1)
+            if(idUnidad != "-1")
                 contentValuesList = this.departamentoDAO.findByIdUnidad(idUnidad);
             else
                 contentValuesList = this.departamentoDAO.findAll();
@@ -71,7 +72,7 @@ public class DepartamentoProcessImpl implements IDepartamentoProcess {
     private Departamento convertContentValueToDto(ContentValues contentValues) throws ParseException {
         Departamento departamento = new Departamento();
 
-        departamento.setDepartamentoId(Integer.parseInt(contentValues.getAsString(DepartamentoContract.Column.ID_DEPARTAMENTO)));
+        departamento.setDepartamentoId(contentValues.getAsString(DepartamentoContract.Column.ID_DEPARTAMENTO));
         departamento.setNombre(contentValues.getAsString(DepartamentoContract.Column.NOMBRE));
 
         return departamento;

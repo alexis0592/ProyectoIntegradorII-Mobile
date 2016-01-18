@@ -27,6 +27,14 @@ public class TipoUnidadProcessImpl implements ITipoUnidadProcess {
         this.tipoUnidadDAO = TipoUnidadDAOImpl.getInstance(context);
     }
 
+    @Override
+    public TipoUnidad saveTipoUnidad(TipoUnidad tipoUnidad) {
+
+        return ((this.tipoUnidadDAO.save(this.convertTipoUnidadToContentValue(tipoUnidad)) != null)
+                ? tipoUnidad : null);
+    }
+
+    @Override
     public List<TipoUnidad> findAll(){
         Log.i(TAG, "findAll");
 
@@ -47,10 +55,19 @@ public class TipoUnidadProcessImpl implements ITipoUnidadProcess {
     }
 
 
+    private ContentValues convertTipoUnidadToContentValue(TipoUnidad tipoUnidad){
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(TipoUnidadContract.Column.ID_TIPO_UNIDAD, tipoUnidad.getIdTipoUnidad());
+        contentValues.put(TipoUnidadContract.Column.NOMBRE, tipoUnidad.getNombre());
+
+        return contentValues;
+    }
+
     private TipoUnidad convertContentValueToDto(ContentValues contentValues) throws ParseException {
         TipoUnidad tipoUnidad = new TipoUnidad();
 
-        tipoUnidad.setIdTipoUnidad(Integer.parseInt(contentValues.getAsString(TipoUnidadContract.Column.ID_TIPO_UNIDAD)));
+        tipoUnidad.setIdTipoUnidad(contentValues.getAsString(TipoUnidadContract.Column.ID_TIPO_UNIDAD));
         tipoUnidad.setNombre(contentValues.getAsString(TipoUnidadContract.Column.NOMBRE));
 
         return tipoUnidad;

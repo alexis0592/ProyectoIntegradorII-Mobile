@@ -5,15 +5,15 @@ package co.edu.udea.pi2.ubicameudea.model.dto;
  */
 public class Unidad {
 
-    private Integer idUnidad;
+    private String idUnidad;
     private String nombre;
     private TipoUnidad tipoUnidad;
 
-    public Integer getIdUnidad() {
+    public String getIdUnidad() {
         return idUnidad;
     }
 
-    public void setIdUnidad(Integer idUnidad) {
+    public void setIdUnidad(String idUnidad) {
         this.idUnidad = idUnidad;
     }
 
