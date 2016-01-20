@@ -34,6 +34,20 @@ public class BloqueProcessImpl implements IBloqueProcess {
     }
 
     @Override
+    public Bloque findBloqueById(String id) {
+
+        ContentValues bloqueContentValue = new ContentValues();
+        bloqueContentValue = this.bloqueDAO.findBloqueById(id);
+        Bloque bloqueFound = null;
+        try {
+             bloqueFound = convertContentValueToBloque(bloqueContentValue);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return bloqueFound;
+    }
+
+    @Override
     public List<Bloque> findAllBloques() {
         Log.i(TAG, "findAllBloques");
 

@@ -27,6 +27,12 @@ public class UbicacionProcessImpl implements IUbicacionProcess {
     }
 
     @Override
+    public Ubicacion saveUbicacion(Ubicacion ubicacion) {
+        return ((this.ubicacionDAO.saveUbicacion(this.convertUbicacionToContentValue(ubicacion))
+                != null) ? ubicacion : null);
+    }
+
+    @Override
     public Ubicacion finUbicacionByBloqAndOffice(int bloq, int office) {
 
         Ubicacion ubicacion = new Ubicacion();
@@ -60,6 +66,21 @@ public class UbicacionProcessImpl implements IUbicacionProcess {
         }
 
         return listUbicaciones;
+    }
+
+    private ContentValues convertUbicacionToContentValue(Ubicacion ubicacion){
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(UbicacionContract.Column.ID_UBICACION, ubicacion.getUbicacionId());
+        contentValues.put(UbicacionContract.Column.ID_BLOQUE, ubicacion.getBloqueId());
+        contentValues.put(UbicacionContract.Column.ID_DEPARTAMENTO, ubicacion.getDepartamentoId());
+        contentValues.put(UbicacionContract.Column.ID_UNIDAD, ubicacion.getUnidadId());
+        contentValues.put(UbicacionContract.Column.LATITUD, ubicacion.getLatitud().toString());
+        contentValues.put(UbicacionContract.Column.LONGITUD, ubicacion.getLongitud().toString());
+        contentValues.put(UbicacionContract.Column.OFICINA, ubicacion.getOficina());
+
+        return contentValues;
     }
 
     private Ubicacion convertContentValueToUbicacion(ContentValues contentValues) throws ParseException{

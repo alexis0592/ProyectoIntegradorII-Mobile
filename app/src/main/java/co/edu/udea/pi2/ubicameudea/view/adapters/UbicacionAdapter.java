@@ -10,6 +10,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import co.edu.udea.pi2.ubicameudea.R;
+import co.edu.udea.pi2.ubicameudea.domain.process.IBloqueProcess;
+import co.edu.udea.pi2.ubicameudea.domain.process.impl.BloqueProcessImpl;
+import co.edu.udea.pi2.ubicameudea.model.dto.Bloque;
 import co.edu.udea.pi2.ubicameudea.model.dto.Ubicacion;
 
 /**
@@ -20,6 +23,7 @@ public class UbicacionAdapter extends ArrayAdapter<Ubicacion> {
     private Context context;
     private List<Ubicacion> listaUbicaciones;
     private LayoutInflater inflater;
+    private IBloqueProcess bloqueProcess;
 
 
     public UbicacionAdapter(Context context, int textViewResourceId,
@@ -28,6 +32,7 @@ public class UbicacionAdapter extends ArrayAdapter<Ubicacion> {
         this.context = context;
         this.listaUbicaciones = listaUbicaciones;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.bloqueProcess = new BloqueProcessImpl(context);
     }
 
     @Override
@@ -46,9 +51,10 @@ public class UbicacionAdapter extends ArrayAdapter<Ubicacion> {
         /********** Inflate spinner_rows.xml file for each row ( Defined below ) ************/
         View row = inflater.inflate(R.layout.layout_item_ubicacion, parent, false);
 
+
         /***** Get each Model object from Arraylist ********/
         Ubicacion ubicacion = listaUbicaciones.get(position);
-
+        Bloque bloqueFind = bloqueProcess.findBloqueById(ubicacion.getBloqueId());
         TextView txvId = (TextView)row.findViewById(R.id.item_ubicacion_txvId);
         TextView txvBloque = (TextView)row.findViewById(R.id.item_ubicacion_txvBloque);
         TextView txvOficina = (TextView)row.findViewById(R.id.item_ubicacion_txvOficina);
@@ -56,7 +62,7 @@ public class UbicacionAdapter extends ArrayAdapter<Ubicacion> {
         TextView txvLongitud = (TextView)row.findViewById(R.id.item_ubicacion_txvLongitud);
 
         txvId.setText(ubicacion.getUbicacionId().toString());
-        txvBloque.setText(ubicacion.getBloqueId().toString());
+        txvBloque.setText(bloqueFind.getNumBloque());
         txvOficina.setText(ubicacion.getOficina().toString());
         txvLatitud.setText(ubicacion.getLatitud().toString());
         txvLongitud.setText(ubicacion.getLongitud().toString());

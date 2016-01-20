@@ -15,7 +15,9 @@ import java.net.URI;
 import java.net.URL;
 
 import co.edu.udea.pi2.ubicameudea.controllers.BloqueController;
+import co.edu.udea.pi2.ubicameudea.controllers.DepartemantoController;
 import co.edu.udea.pi2.ubicameudea.controllers.TipoUnidadController;
+import co.edu.udea.pi2.ubicameudea.controllers.UbicacionController;
 import co.edu.udea.pi2.ubicameudea.controllers.UnidadController;
 
 /**
@@ -29,6 +31,8 @@ public class UbicameServices extends AsyncTask<String, Integer, Boolean> {
     private BloqueController bloqueController;
     private TipoUnidadController tipoUnidadController;
     private UnidadController unidadController;
+    private DepartemantoController departemantoController;
+    private UbicacionController ubicacionController;
 
     public UbicameServices(String serviceType, String url, Activity activity){
         this.activity = activity;
@@ -37,6 +41,8 @@ public class UbicameServices extends AsyncTask<String, Integer, Boolean> {
         this.bloqueController = new BloqueController(this.activity);
         this.tipoUnidadController = new TipoUnidadController(this.activity);
         this.unidadController = new UnidadController(this.activity);
+        this.departemantoController = new DepartemantoController(this.activity);
+        this.ubicacionController = new UbicacionController(this.activity);
     }
 
     @Override
@@ -65,6 +71,12 @@ public class UbicameServices extends AsyncTask<String, Integer, Boolean> {
                     break;
                 case "Unidad":
                     this.unidadController.processRestfulResponse(jsonArray);
+                    break;
+                case "Departamento":
+                    this.departemantoController.processRestfulResponse(jsonArray);
+                    break;
+                case "Ubicacion":
+                    this.ubicacionController.processRestfulResponse(jsonArray);
                     break;
             }
 

@@ -36,6 +36,20 @@ public class UbicacionDAOImpl implements IUbicacionDAO {
     }
 
     @Override
+    public ContentValues saveUbicacion(ContentValues ubicacionContentValue) {
+        try {
+            SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getWritableDatabase();
+
+            long rowId = sqLiteDatabase.insertWithOnConflict(UbicacionContract.TABLE_NAME, null, ubicacionContentValue,
+                    SQLiteDatabase.CONFLICT_IGNORE);
+            return ((rowId != -1L) ? ubicacionContentValue : null);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public List<ContentValues> findUbicationByBloqueAndOffice(int bloque, int numOffice) {
         Log.i(TAG, "findUbicationByBloqueAndOffice");
 
@@ -63,13 +77,13 @@ public class UbicacionDAOImpl implements IUbicacionDAO {
         SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getReadableDatabase();
 
         String query = String.format("SELECT * FROM %s WHERE " +
-                        "((%s = %s) OR (%s = %s)) AND " +
-                        "((%s = %s) OR (%s = %s)) AND " +
-                        "((%s = %s) OR (%s = %s))",
+                        "(('%s' = %s) OR (%s = '%s')) AND " +
+                        "(('%s' = %s) OR (%s = '%s')) AND " +
+                        "(('%s' = %s) OR (%s = '%s'))",
                 UbicacionContract.TABLE_NAME,
-                idBloque, -1, UbicacionContract.Column.ID_BLOQUE, idBloque,
-                idDepartamento, -1, UbicacionContract.Column.ID_DEPARTAMENTO, idDepartamento,
-                idUnidad, -1, UbicacionContract.Column.ID_UNIDAD, idUnidad);
+                idBloque, "-1", UbicacionContract.Column.ID_BLOQUE, idBloque,
+                idDepartamento, "-1", UbicacionContract.Column.ID_DEPARTAMENTO, idDepartamento,
+                idUnidad, "-1", UbicacionContract.Column.ID_UNIDAD, idUnidad);
 
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         String[]columns = new String[]{UbicacionContract.Column.ID_BLOQUE, UbicacionContract.Column.ID_DEPARTAMENTO,

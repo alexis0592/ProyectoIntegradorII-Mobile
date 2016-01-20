@@ -11,6 +11,8 @@ public interface IBloqueDAO {
 
     public ContentValues save(ContentValues bloqueContentValue);
 
+    public ContentValues findBloqueById(String bloqId);
+
     public List<ContentValues> findAllBloque(Boolean distinct, String[] columns,
                                              String selection, String[] selectionArgs, String groupBy,
                                              String having, String orderBy, String limit);

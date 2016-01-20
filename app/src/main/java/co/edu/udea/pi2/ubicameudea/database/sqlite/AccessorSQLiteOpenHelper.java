@@ -82,6 +82,7 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(ubicacionTableSQLCreator);
 
         //LlenarBaseDatos(db);
+        //this.deleteInfoFromTables(db);
     }
 
     private void LlenarBaseDatos(SQLiteDatabase db) {
@@ -98,7 +99,10 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     private void deleteInfoFromTables(SQLiteDatabase db){
-
+        this.deleteData(db, DepartamentoContract.TABLE_NAME);
+        Log.d(TAG, "Se eliminaron los departamentos existentes");
+        this.deleteData(db, BloqueContract.TABLE_NAME);
+        Log.d(TAG, "Se eliminaron los bloques existentes");
     }
 
     private void insertarUbicaciones(SQLiteDatabase db) {
@@ -148,6 +152,11 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
                 UbicacionContract.Column.ID_UNIDAD,
                 4, 21, 218, 6.268104, -75.568049, 10, 23));
     }
+
+    private void deleteData(SQLiteDatabase db, String table){
+        db.execSQL(String.format("DELETE FROM %s", table));
+    }
+
 
     private void insertarDepartamentos(SQLiteDatabase db) {
         //UNIDADES ADMINISTRATIVAS:
@@ -427,4 +436,5 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
 
         this.onCreate(db);
     }
+
 }

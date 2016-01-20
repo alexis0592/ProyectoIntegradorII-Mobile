@@ -14,11 +14,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import co.edu.udea.pi2.ubicameudea.R;
+import co.edu.udea.pi2.ubicameudea.domain.process.IBloqueProcess;
+import co.edu.udea.pi2.ubicameudea.domain.process.impl.BloqueProcessImpl;
+import co.edu.udea.pi2.ubicameudea.model.dto.Bloque;
 import co.edu.udea.pi2.ubicameudea.model.dto.Ubicacion;
 
 public class UdeaMapActivity extends Activity implements OnMapReadyCallback {
 
     private Ubicacion ubicacion;
+    private Bloque bloque;
+    private IBloqueProcess bloqueProcess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,9 @@ public class UdeaMapActivity extends Activity implements OnMapReadyCallback {
         Intent intent = getIntent();
         ubicacion = new Ubicacion();
         ubicacion = (Ubicacion) intent.getSerializableExtra("ubicacion");
+
+        this.bloqueProcess = new BloqueProcessImpl(this.getApplicationContext());
+        bloque = this.bloqueProcess.findBloqueById(ubicacion.getBloqueId());
 
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);

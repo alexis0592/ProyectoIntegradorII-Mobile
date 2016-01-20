@@ -11,6 +11,8 @@ public interface IBloqueProcess {
 
     public Bloque saveBloque(Bloque bloque);
 
+    public Bloque findBloqueById(String id);
+
     public List<Bloque> findAllBloques();
 
 }

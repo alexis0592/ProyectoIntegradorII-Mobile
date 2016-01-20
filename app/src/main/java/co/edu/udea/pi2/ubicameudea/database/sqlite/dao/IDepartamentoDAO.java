@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface IDepartamentoDAO {
 
+    public ContentValues saveDepartamento(ContentValues departamentoContentValue);
+
     public List<ContentValues> findAll();
 
     public List<ContentValues> findByIdUnidad(String idUnidad);

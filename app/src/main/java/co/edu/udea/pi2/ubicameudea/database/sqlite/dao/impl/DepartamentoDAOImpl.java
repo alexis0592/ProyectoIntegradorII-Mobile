@@ -36,6 +36,20 @@ public class DepartamentoDAOImpl implements IDepartamentoDAO {
     }
 
     @Override
+    public ContentValues saveDepartamento(ContentValues departamentoContentValue) {
+        try {
+            SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getWritableDatabase();
+
+            long rowId = sqLiteDatabase.insertWithOnConflict(DepartamentoContract.TABLE_NAME, null, departamentoContentValue,
+                    SQLiteDatabase.CONFLICT_IGNORE);
+            return ((rowId != -1L) ? departamentoContentValue : null);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public List<ContentValues> findAll() {
         Log.i(TAG, "findAll");
 

@@ -9,6 +9,8 @@ import co.edu.udea.pi2.ubicameudea.model.dto.Departamento;
  */
 public interface IDepartamentoProcess {
 
+    public Departamento saveDepartamento(Departamento departamento);
+
     public List<Departamento> findAll();
 
     public List<Departamento> findByIdUnidad(String idUnidad);

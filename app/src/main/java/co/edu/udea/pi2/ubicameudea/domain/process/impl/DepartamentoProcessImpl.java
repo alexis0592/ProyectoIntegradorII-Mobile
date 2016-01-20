@@ -28,6 +28,12 @@ public class DepartamentoProcessImpl implements IDepartamentoProcess {
     }
 
     @Override
+    public Departamento saveDepartamento(Departamento departamento) {
+        return ((this.departamentoDAO.saveDepartamento(this.convertDepartamentoToContentValue(departamento))
+                != null) ? departamento : null);
+    }
+
+    @Override
     public List<Departamento> findAll() {
         Log.i(TAG, "findAll");
 
@@ -67,6 +73,17 @@ public class DepartamentoProcessImpl implements IDepartamentoProcess {
         }
 
         return list;
+    }
+
+    private ContentValues convertDepartamentoToContentValue(Departamento departamento){
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DepartamentoContract.Column.ID_DEPARTAMENTO, departamento.getDepartamentoId());
+        contentValues.put(DepartamentoContract.Column.NOMBRE, departamento.getNombre());
+        contentValues.put(DepartamentoContract.Column.ID_UNIDAD, departamento.getUnidad().getIdUnidad());
+
+        return contentValues;
     }
 
     private Departamento convertContentValueToDto(ContentValues contentValues) throws ParseException {

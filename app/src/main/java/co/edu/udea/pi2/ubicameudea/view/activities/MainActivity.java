@@ -38,14 +38,18 @@ public class MainActivity extends ActionBarActivity {
         ubicameServices.execute();
         ubicameServices = new UbicameServices("Unidad", "https://ubicame-udea.herokuapp.com/unidades", this);
         ubicameServices.execute();
+        ubicameServices = new UbicameServices("Departamento", "https://ubicame-udea.herokuapp.com/departamentos", this);
+        ubicameServices.execute();
+        ubicameServices = new UbicameServices("Ubicacion", "https://ubicame-udea.herokuapp.com/ubicaciones", this);
+        ubicameServices.execute();
     }
 
     public void initComponents() {
         //BloqueProcessImpl bloqueProcess = new BloqueProcessImpl(this.getApplicationContext());
         this.etxBloque = (EditText) super.findViewById(R.id.main_etxBloque);
-        this.etxBloque.setTextColor(Color.parseColor("#FFFFFF"));
+        this.etxBloque.setTextColor(Color.parseColor("#000000"));
         this.etxSalon = (EditText) super.findViewById(R.id.main_etxSalon);
-        this.etxSalon.setTextColor(Color.parseColor("#FFFFFF"));
+        this.etxSalon.setTextColor(Color.parseColor("#000000"));
 
         UbicacionProcessImpl ubicacionProcess = new UbicacionProcessImpl(getBaseContext());
 

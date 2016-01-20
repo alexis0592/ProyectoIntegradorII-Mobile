@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface IUbicacionDAO {
 
+    public ContentValues saveUbicacion(ContentValues ubicacionContentValue);
+
     public List<ContentValues> findUbicationByBloqueAndOffice(int bloque, int numOffice);
 
     public List<ContentValues> findUbicacion(String idUnidad, String idDepartamento, String idBloque);

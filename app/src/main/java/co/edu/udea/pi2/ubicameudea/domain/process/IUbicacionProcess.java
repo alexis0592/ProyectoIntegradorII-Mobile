@@ -9,6 +9,8 @@ import co.edu.udea.pi2.ubicameudea.model.dto.Ubicacion;
  */
 public interface IUbicacionProcess {
 
+    public Ubicacion saveUbicacion(Ubicacion ubicacion);
+
     public Ubicacion finUbicacionByBloqAndOffice(int bloq, int office);
 
     public List<Ubicacion> findUbicacion(String idUnidad, String idDepartamento, String idBloque);
