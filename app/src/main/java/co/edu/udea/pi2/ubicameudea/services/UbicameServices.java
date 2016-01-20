@@ -19,6 +19,7 @@ import co.edu.udea.pi2.ubicameudea.controllers.DepartemantoController;
 import co.edu.udea.pi2.ubicameudea.controllers.TipoUnidadController;
 import co.edu.udea.pi2.ubicameudea.controllers.UbicacionController;
 import co.edu.udea.pi2.ubicameudea.controllers.UnidadController;
+import co.edu.udea.pi2.ubicameudea.view.utilities.Utilities;
 
 /**
  * Created by Alexis on 11/01/16.
@@ -33,6 +34,7 @@ public class UbicameServices extends AsyncTask<String, Integer, Boolean> {
     private UnidadController unidadController;
     private DepartemantoController departemantoController;
     private UbicacionController ubicacionController;
+    private Utilities utilities;
 
     public UbicameServices(String serviceType, String url, Activity activity){
         this.activity = activity;
@@ -43,11 +45,13 @@ public class UbicameServices extends AsyncTask<String, Integer, Boolean> {
         this.unidadController = new UnidadController(this.activity);
         this.departemantoController = new DepartemantoController(this.activity);
         this.ubicacionController = new UbicacionController(this.activity);
+        this.utilities = new Utilities(activity.getApplicationContext());
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        //this.utilities.showDialog("Alerta", "Espere por favor", false);
     }
 
     @Override
@@ -92,5 +96,6 @@ public class UbicameServices extends AsyncTask<String, Integer, Boolean> {
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
+        //this.utilities.cancelProgressDialog();
     }
 }

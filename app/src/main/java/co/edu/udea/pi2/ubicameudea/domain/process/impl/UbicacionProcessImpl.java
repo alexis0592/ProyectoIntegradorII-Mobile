@@ -79,6 +79,7 @@ public class UbicacionProcessImpl implements IUbicacionProcess {
         contentValues.put(UbicacionContract.Column.LATITUD, ubicacion.getLatitud().toString());
         contentValues.put(UbicacionContract.Column.LONGITUD, ubicacion.getLongitud().toString());
         contentValues.put(UbicacionContract.Column.OFICINA, ubicacion.getOficina());
+        contentValues.put(UbicacionContract.Column.DESCRIPCION, ubicacion.getDescripcion());
 
         return contentValues;
     }

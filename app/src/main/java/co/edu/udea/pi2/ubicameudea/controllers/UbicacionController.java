@@ -33,6 +33,7 @@ public class UbicacionController {
         Double longitud;
         String departamentoId;
         String unidadId;
+        String descripcion;
         Ubicacion ubicacionToSave;
 
         for(int i = 0; i < jsonArray.length(); i++){
@@ -49,6 +50,7 @@ public class UbicacionController {
             longitud = Double.parseDouble(jsonObject.getString("longitud"));
             departamentoId = jsonInsideDepartamento.getString("_id");
             unidadId = jsonInsideUnidad.getString("_id");
+            descripcion = jsonObject.getString("descripcion");
 
             ubicacionToSave = new Ubicacion();
             ubicacionToSave.setUbicacionId(ubicacionId);
@@ -58,6 +60,7 @@ public class UbicacionController {
             ubicacionToSave.setLongitud(longitud);
             ubicacionToSave.setDepartamentoId(departamentoId);
             ubicacionToSave.setUnidadId(unidadId);
+            ubicacionToSave.setDescripcion(descripcion);
 
 
             this.ubicacionProcess.saveUbicacion(ubicacionToSave);

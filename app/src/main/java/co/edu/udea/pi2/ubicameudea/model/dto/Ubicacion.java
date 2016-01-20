@@ -14,6 +14,7 @@ public class Ubicacion implements Serializable{
     private Double longitud;
     private String departamentoId;
     private String unidadId;
+    private String descripcion;
 
     public Ubicacion(){
         super();
@@ -73,5 +74,13 @@ public class Ubicacion implements Serializable{
 
     public void setUnidadId(String unidadId) {
         this.unidadId = unidadId;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

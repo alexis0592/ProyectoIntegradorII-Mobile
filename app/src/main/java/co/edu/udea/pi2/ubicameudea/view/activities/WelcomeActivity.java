@@ -2,6 +2,8 @@ package co.edu.udea.pi2.ubicameudea.view.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;

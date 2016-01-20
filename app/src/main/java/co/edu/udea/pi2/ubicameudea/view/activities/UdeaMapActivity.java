@@ -71,7 +71,9 @@ public class UdeaMapActivity extends Activity implements OnMapReadyCallback {
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         map.setMyLocationEnabled(true);
         map.addMarker(new MarkerOptions().position(new LatLng(ubicacion.getLatitud(),
-                ubicacion.getLongitud())).title(ubicacion.getBloqueId().toString() + " - " + ubicacion.getOficina().toString()));
+                ubicacion.getLongitud())).title(this.bloque.getNumBloque() + " - " + ubicacion.getOficina().toString())
+                .snippet(ubicacion.getDescripcion()));
+
 
     }
 }

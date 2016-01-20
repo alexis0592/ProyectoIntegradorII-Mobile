@@ -19,13 +19,14 @@ public class UbicacionContract extends PersistanceContract {
         public static final String LONGITUD = "longitud";
         public static final String ID_DEPARTAMENTO = "id_departamento";
         public static final String ID_UNIDAD = "id_unidad";
+        public static final String DESCRIPCION = "descripcion";
 
         public Column() {
             super();
         }
 
         public static final String[] getAllColumns() {
-            return (new String[]{ID_UBICACION, ID_BLOQUE, OFICINA, LATITUD, LONGITUD, ID_DEPARTAMENTO, ID_UNIDAD});
+            return (new String[]{ID_UBICACION, ID_BLOQUE, OFICINA, LATITUD, LONGITUD, ID_DEPARTAMENTO, ID_UNIDAD, DESCRIPCION});
         }
 
     }
