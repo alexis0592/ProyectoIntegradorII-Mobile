@@ -11,7 +11,7 @@ public interface IUbicacionProcess {
 
     public Ubicacion saveUbicacion(Ubicacion ubicacion);
 
-    public Ubicacion finUbicacionByBloqAndOffice(int bloq, int office);
+    public Ubicacion finUbicacionByBloqAndOffice(String bloq, String office);
 
     public List<Ubicacion> findUbicacion(String idUnidad, String idDepartamento, String idBloque);
 

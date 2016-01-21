@@ -50,19 +50,19 @@ public class UbicacionDAOImpl implements IUbicacionDAO {
     }
 
     @Override
-    public List<ContentValues> findUbicationByBloqueAndOffice(int bloque, int numOffice) {
+    public List<ContentValues> findUbicationByBloqueAndOffice(String bloque, String numOffice) {
         Log.i(TAG, "findUbicationByBloqueAndOffice");
 
         SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getReadableDatabase();
 
-        String query = String.format("SELECT * FROM %s WHERE %s = %s AND %s = %s",
+        String query = String.format("SELECT * FROM %s WHERE %s = '%s' AND %s = '%s'",
                 UbicacionContract.TABLE_NAME, UbicacionContract.Column.ID_BLOQUE, bloque, UbicacionContract.Column.OFICINA, numOffice);
 
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         String[]columns = new String[]{UbicacionContract.Column.ID_BLOQUE, UbicacionContract.Column.ID_DEPARTAMENTO,
                 UbicacionContract.Column.ID_UBICACION, UbicacionContract.Column.ID_UNIDAD,
                 UbicacionContract.Column.OFICINA, UbicacionContract.Column.LATITUD,
-                UbicacionContract.Column.LONGITUD};
+                UbicacionContract.Column.LONGITUD, UbicacionContract.Column.DESCRIPCION};
         List<ContentValues> contentValuesList = this.cursorToContentValues(cursor, columns);
 
         cursor.close();
@@ -89,7 +89,7 @@ public class UbicacionDAOImpl implements IUbicacionDAO {
         String[]columns = new String[]{UbicacionContract.Column.ID_BLOQUE, UbicacionContract.Column.ID_DEPARTAMENTO,
                 UbicacionContract.Column.ID_UBICACION, UbicacionContract.Column.ID_UNIDAD,
                 UbicacionContract.Column.OFICINA, UbicacionContract.Column.LATITUD,
-                UbicacionContract.Column.LONGITUD};
+                UbicacionContract.Column.LONGITUD, UbicacionContract.Column.DESCRIPCION};
         List<ContentValues> contentValuesList = this.cursorToContentValues(cursor, columns);
 
         cursor.close();

@@ -59,7 +59,7 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
                 UnidadContract.TABLE_NAME, UnidadContract.Column.ID_UNIDAD);
 
         String ubicacionTableSQLCreator = String.format("CREATE TABLE IF NOT EXISTS %s(%s TEXT " +
-                "NOT NULL, %s TEXT NOT NULL, %s INTEGER NOT NULL, %s REAL NOT NULL, %s REAL NOT NULL, " +
+                "NOT NULL, %s TEXT NOT NULL, %s TEXT NOT NULL, %s REAL NOT NULL, %s REAL NOT NULL, " +
                 "%s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT NOT NULL, PRIMARY KEY(%s), FOREIGN KEY(%s) REFERENCES %s(%s), " +
                 "FOREIGN KEY(%s) REFERENCES %s(%s), FOREIGN KEY(%s) REFERENCES %s(%s))",
                 UbicacionContract.TABLE_NAME, UbicacionContract.Column.ID_UBICACION, UbicacionContract.Column.ID_BLOQUE,
@@ -75,6 +75,7 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
         Log.d(TAG, "Se creo la tabla TIPO_UNIDAD");
         Log.d(TAG, "Se creo la tabla UNIDAD");
         Log.d(TAG, "Se creo la tabla DEPARTAMENTO");
+        Log.d(TAG, "Se creo la tabla UBICACION");
 
         db.execSQL(bloqueTableSQLCreator);
         db.execSQL(tipoUnidadTableSQLCreator);

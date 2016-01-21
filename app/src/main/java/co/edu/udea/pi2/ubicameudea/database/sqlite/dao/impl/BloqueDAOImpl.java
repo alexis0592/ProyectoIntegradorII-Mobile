@@ -65,6 +65,20 @@ public class BloqueDAOImpl implements IBloqueDAO {
     }
 
     @Override
+    public ContentValues findBloqueByNum(String bloqNum) {
+        Log.i(TAG, "findBLoqueByNum()");
+
+        SQLiteDatabase sqLiteDatabase = this.accessorSQLiteOpenHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(String.format("SELECT * FROM %s WHERE %s = ?",
+                BloqueContract.TABLE_NAME, BloqueContract.Column.NUMERO), new String[]{bloqNum});
+        List<ContentValues> contentValuesList = this.cursorToContentValues(cursor, null);
+
+        cursor.close();
+
+        return contentValuesList.get(0);
+    }
+
+    @Override
     public List<ContentValues> findAllBloque(Boolean distinct, String[] columns,
                                              String selection, String[] selectionArgs, String groupBy,
                                              String having, String orderBy, String limit) {

@@ -13,6 +13,8 @@ public interface IBloqueProcess {
 
     public Bloque findBloqueById(String id);
 
+    public Bloque findBloqueByNum(String bloqNum);
+
     public List<Bloque> findAllBloques();
 
 }

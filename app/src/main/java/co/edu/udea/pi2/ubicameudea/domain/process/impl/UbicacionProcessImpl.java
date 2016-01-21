@@ -33,7 +33,7 @@ public class UbicacionProcessImpl implements IUbicacionProcess {
     }
 
     @Override
-    public Ubicacion finUbicacionByBloqAndOffice(int bloq, int office) {
+    public Ubicacion finUbicacionByBloqAndOffice(String bloq, String office) {
 
         Ubicacion ubicacion = new Ubicacion();
 
@@ -94,7 +94,7 @@ public class UbicacionProcessImpl implements IUbicacionProcess {
         ubicacion.setLatitud(Double.parseDouble(contentValues.getAsString(UbicacionContract.Column.LATITUD)));
         ubicacion.setLongitud(Double.parseDouble(contentValues.getAsString(UbicacionContract.Column.LONGITUD)));
         ubicacion.setOficina(contentValues.getAsString(UbicacionContract.Column.OFICINA));
-
+        ubicacion.setDescripcion(contentValues.getAsString(UbicacionContract.Column.DESCRIPCION));
         return ubicacion;
     }
 }

@@ -13,6 +13,8 @@ public interface IBloqueDAO {
 
     public ContentValues findBloqueById(String bloqId);
 
+    public ContentValues findBloqueByNum(String bloqNum);
+
     public List<ContentValues> findAllBloque(Boolean distinct, String[] columns,
                                              String selection, String[] selectionArgs, String groupBy,
                                              String having, String orderBy, String limit);

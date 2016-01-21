@@ -14,7 +14,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import co.edu.udea.pi2.ubicameudea.R;
+import co.edu.udea.pi2.ubicameudea.domain.process.IBloqueProcess;
+import co.edu.udea.pi2.ubicameudea.domain.process.impl.BloqueProcessImpl;
 import co.edu.udea.pi2.ubicameudea.domain.process.impl.UbicacionProcessImpl;
+import co.edu.udea.pi2.ubicameudea.model.dto.Bloque;
 import co.edu.udea.pi2.ubicameudea.model.dto.Ubicacion;
 import co.edu.udea.pi2.ubicameudea.services.UbicameServices;
 
@@ -68,11 +71,19 @@ public class MainActivity extends ActionBarActivity {
                     return;
                 }
                 try {
-                    Integer idBloque = Integer.parseInt(etxBloque.getText().toString());
-                    Integer idSalon = Integer.parseInt(etxSalon.getText().toString());
+                    String idBloque = etxBloque.getText().toString();
+                    String idSalon = etxSalon.getText().toString();
+
+                    IBloqueProcess bloqueProcessImpl = new BloqueProcessImpl(getBaseContext());
+                    Bloque bloque = bloqueProcessImpl.findBloqueByNum(idBloque.toString());
+
+                    if (bloque == null){
+                        Toast.makeText(getBaseContext(),getResources().getString(R.string.msg_lugar_no_encontrado), Toast.LENGTH_LONG).show();
+                        return;
+                    }
 
                     UbicacionProcessImpl ubicacionProcess = new UbicacionProcessImpl(getBaseContext());
-                    Ubicacion ubicacion = ubicacionProcess.finUbicacionByBloqAndOffice(idBloque, idSalon);
+                    Ubicacion ubicacion = ubicacionProcess.finUbicacionByBloqAndOffice(bloque.getIdBloque(), idSalon);
 
                     if (ubicacion.getUbicacionId() != null) {
                         UdeaMapActivity udeaMapActivity = new UdeaMapActivity();
