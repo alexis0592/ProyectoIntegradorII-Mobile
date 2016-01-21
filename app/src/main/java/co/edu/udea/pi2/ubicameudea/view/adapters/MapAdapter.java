@@ -13,15 +13,12 @@ import co.edu.udea.pi2.ubicameudea.R;
 /**
  * Created by Alexis on 20/01/16.
  */
-public class MapAdapter extends Activity implements GoogleMap.OnMapLongClickListener{
-
-    class MyInfoWindow implements GoogleMap.InfoWindowAdapter{
-
+public class MapAdapter extends Activity implements GoogleMap.InfoWindowAdapter{
         private final View myContentsView;
         private TextView markerTitle;
         private TextView markerSnippet;
 
-        public MyInfoWindow(){
+        public MapAdapter(){
             this.myContentsView = getLayoutInflater().inflate(R.layout.custom_info_windows, null);
         }
 
@@ -40,12 +37,8 @@ public class MapAdapter extends Activity implements GoogleMap.OnMapLongClickList
         public View getInfoContents(Marker marker) {
             return null;
         }
-    }
 
 
-    @Override
-    public void onMapLongClick(LatLng latLng) {
 
-    }
 
 }

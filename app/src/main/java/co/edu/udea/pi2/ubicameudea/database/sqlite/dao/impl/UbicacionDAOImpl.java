@@ -77,13 +77,13 @@ public class UbicacionDAOImpl implements IUbicacionDAO {
         SQLiteDatabase sqLiteDatabase = accessorSQLiteOpenHelper.getReadableDatabase();
 
         String query = String.format("SELECT * FROM %s WHERE " +
-                        "(('%s' = %s) OR (%s = '%s')) AND " +
-                        "(('%s' = %s) OR (%s = '%s')) AND " +
-                        "(('%s' = %s) OR (%s = '%s'))",
+                        "(('%s' = '%s') OR (%s = '%s')) AND " +
+                        "(('%s' = '%s') OR (%s = '%s')) AND " +
+                        "(('%s' = '%s') OR (%s = '%s'))",
                 UbicacionContract.TABLE_NAME,
-                idBloque, "-1", UbicacionContract.Column.ID_BLOQUE, idBloque,
-                idDepartamento, "-1", UbicacionContract.Column.ID_DEPARTAMENTO, idDepartamento,
-                idUnidad, "-1", UbicacionContract.Column.ID_UNIDAD, idUnidad);
+                idBloque, "56a0640611e363110030a7da", UbicacionContract.Column.ID_BLOQUE, idBloque,
+                idDepartamento, "56a06cef11e363110030a7dc", UbicacionContract.Column.ID_DEPARTAMENTO, idDepartamento,
+                idUnidad, "56a0646311e363110030a7db", UbicacionContract.Column.ID_UNIDAD, idUnidad);
 
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         String[]columns = new String[]{UbicacionContract.Column.ID_BLOQUE, UbicacionContract.Column.ID_DEPARTAMENTO,

@@ -60,7 +60,7 @@ public class DepartamentoProcessImpl implements IDepartamentoProcess {
         List<Departamento> list = new ArrayList<Departamento>();
         try {
             List<ContentValues> contentValuesList = null;
-            if(idUnidad != "-1")
+            if(!(idUnidad.equals("56a0646311e363110030a7db")))
                 contentValuesList = this.departamentoDAO.findByIdUnidad(idUnidad);
             else
                 contentValuesList = this.departamentoDAO.findAll();

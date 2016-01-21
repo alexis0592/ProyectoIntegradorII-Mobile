@@ -39,7 +39,7 @@ public class UnidadProcessImpl implements IUnidadProcess{
         List<Unidad> list = new ArrayList<Unidad>();
         try {
             List<ContentValues> contentValuesList = null;
-            if(idTipo != "-1")
+            if(!(idTipo.equals("56a062bd11e363110030a7d8")))
                 contentValuesList = this.unidadDAO.findUnidadesByTipo(idTipo);
             else
                 contentValuesList = this.unidadDAO.findAll();
